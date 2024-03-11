@@ -19,9 +19,9 @@ class Menu extends Phaser.Scene
         let title1 = this.add.bitmapText(centerX, centerY, 'aqua_font', 'AQUA TEEN HUNGER MADNESS', 52).setOrigin(0.5).setTint(0x3CA2FF)//0x3CA2FF
         let title2 = this.add.bitmapText(centerX, centerY + textSpacer * 2, 'aqua_font', 'Press SPACE to play', 50).setOrigin(0.5).setTint(0x70F235)
 
-        let overallDuration = 2500
+        /*let overallDuration = 2500
         let visiblePauseDuration = 500
-        let flashDuration = overallDuration - visiblePauseDuration / 3
+        let flashDuration = overallDuration - visiblePauseDuration / 3*/
 
         let shakeTweenA = this.tweens.add({
             targets: title1,

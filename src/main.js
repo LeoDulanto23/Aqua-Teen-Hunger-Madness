@@ -13,6 +13,12 @@ const config = {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     pixelArt: true,
+    physics: {
+        default: "arcade",
+        arcade: {
+            debug: false,
+        }
+    },
     scene: [Load, Menu, Adultswim, Credit, Instruction, Talkone, Play]
 
 
@@ -24,6 +30,10 @@ let centerY = game.config.height/2
 let w = game.config.width
 let h = game.config.height
 const textSpacer = 64
+
+//test
+//let borderUISize = game.config.height / 15
+//let borderPadding = borderUISize / 3
 
 let cursors
 
