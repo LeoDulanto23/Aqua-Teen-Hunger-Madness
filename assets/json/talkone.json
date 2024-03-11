@@ -1,9 +1,19 @@
 [
     [
         {
-            "speaker": "Frylock",
+            "speaker": "frylock",
             "dialog": "After creating the mega cpu, we can now use the shrinker to implant it",
             "newSpeaker": "true"
+        },
+        {
+            "speaker": "mastershake",
+            "dialog": "Yeah what does this do?!?!",
+            "newSpeaker": "true"
+        },
+        {
+            "speaker": "shrinkray",
+            "dialog": "click....BEEP!",
+            "newSpeaker":"true"
         }
     ]
 ]

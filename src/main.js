@@ -13,7 +13,7 @@ const config = {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     pixelArt: true,
-    scene: [Load, Menu, Adultswim, Credit, Instruction, Talkone]
+    scene: [Load, Menu, Adultswim, Credit, Instruction, Talkone, Play]
 
 
 }

@@ -16,7 +16,7 @@ class Menu extends Phaser.Scene
         //this.add.bitmapText(centerX, centerY, 'aqua_font', 'Best in the West' , 72).setOrigin(0.5)
         //this.add.bitmapText(centerX, centerY + textSpacer, 'aqua_font', 'Press SPACE lil boi!', 50).setOrigin(0.5)
         this.menuBackground = this.add.tileSprite(0, 0, 960, 580, 'Title').setOrigin(0,0)
-        let title1 = this.add.bitmapText(centerX, centerY, 'aqua_font', 'AQUA TEEN HUNGER MADNESS', 52).setOrigin(0.5).setTint(0x3CA2FF)
+        let title1 = this.add.bitmapText(centerX, centerY, 'aqua_font', 'AQUA TEEN HUNGER MADNESS', 52).setOrigin(0.5).setTint(0x3CA2FF)//0x3CA2FF
         let title2 = this.add.bitmapText(centerX, centerY + textSpacer * 2, 'aqua_font', 'Press SPACE to play', 50).setOrigin(0.5).setTint(0x70F235)
 
         let overallDuration = 2500
@@ -28,9 +28,10 @@ class Menu extends Phaser.Scene
             duration: 500,
             angle: { from: -1, to: 1 },
             yoyo: true,
+            tint: 0xFAFD1D,
             repeat: -1,
         })
-        shakeTweenA.on('yoyo', () => { this.cameras.main.flash(200, 0.0075) ,
+        shakeTweenA.on('yoyo', () => { this.cameras.main.flash(200, 0.0075,),
         this.cameras.main.shake(200, 0.0075)})
 
         let shakeTweenB= this.tweens.add({

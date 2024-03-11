@@ -13,11 +13,11 @@ class Talkone extends Phaser.Scene
 
         this.TEXT_X = 185			    // text w/in dialog box x-position
         this.TEXT_Y = 445			    // text w/in dialog box y-position
-        this.TEXT_SIZE = 50		        // text font size (in pixels)
+        this.TEXT_SIZE = 35		        // text font size (in pixels)
         this.TEXT_MAX_WIDTH = 715	    // max width of text within box
 
         this.NEXT_TEXT = '[SPACE]'	    // text to display for next prompt
-        this.NEXT_X = 775			    // next text prompt x-position
+        this.NEXT_X = 900			    // next text prompt x-position
         this.NEXT_Y = 574			    // next text prompt y-position
 
         this.LETTER_TIMER = 10		    // # ms each letter takes to "type" onscreen
@@ -39,16 +39,37 @@ class Talkone extends Phaser.Scene
     }
     create()
     {
+        let talkmusicConfig = {
+            rate: 1,
+            volume: 0.5,
+            loop: true
+        }
+        this.talkMusic = this.sound.add('talkmusic',talkmusicConfig)
+        this.talkMusic.play()
         this.dialog = this.cache.json.get('Talkone')
 
         // add dialog box sprite
-        this.dialogbox = this.add.sprite(this.DBOX_X, this.DBOX_Y, 'dialogbox').setOrigin(0)
+        //Let's deal with this later, right now we need to get Frylock and Shake to move...
+        this.dialogbox = this.add.sprite(this.DBOX_X, this.DBOX_Y, 'talkbox').setOrigin(0)
 
         // initialize dialog text objects (with no text)
-        this.dialogText = this.add.bitmapText(this.TEXT_X+ 50, this.TEXT_Y / 2, this.DBOX_FONT, '', this.TEXT_SIZE)
+        this.dialogText = this.add.bitmapText(this.TEXT_X -100, this.TEXT_Y, this.DBOX_FONT, '', this.TEXT_SIZE)
         this.nextText = this.add.bitmapText(this.NEXT_X, this.NEXT_Y, this.DBOX_FONT, '', this.TEXT_SIZE)
 
-        this.frylock = this.add.sprite(this.OFFSCREEN_X / 6, this.DBOX_Y+150, 'ultrafrylock').setOrigin(0, 1)
+        this.frylock = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y, 'ultrafrylock').setOrigin(0, 1)
+        this.mastershake = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'ultrashake').setOrigin(0, 1)
+        this.shrinkray = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'ultraray').setOrigin(0, 1)
+
+        /*let shrinkrayTween = this.tweens.add({
+            targets: shrinkray,
+            duration: 1000,
+            angle: 0,
+            yoyo: true,
+            repeat: -1
+        })
+        shrinkrayTween.on('yoyo', () =>{
+            this.cameras.main.flash(200, 0.0075)
+        })*/
 
         cursors = this.input.keyboard.createCursorKeys()
 
@@ -59,6 +80,7 @@ class Talkone extends Phaser.Scene
         // check for spacebar press
         if(Phaser.Input.Keyboard.JustDown(cursors.space) && !this.dialogTyping) 
         {
+            this.sound.play('Beep')
             this.typeText() // trigger dialog
         }
     }
@@ -102,7 +124,15 @@ class Talkone extends Phaser.Scene
                     duration: this.tweenDuration,
                     ease: 'Linear',
                     onComplete: () => {
-                        this.scene.start('menuScene')
+                        this.talkMusic.stop()
+                        this.playDelay = this.time.delayedCall(1000, () =>{
+                            this.sound.play('Click')
+                            this.cameras.main.flash(200, 0xFD1DDB, 0.0075)
+                        })
+                        this.playDelay = this.time.delayedCall(2500, () =>{
+                            this.scene.start('playScene')
+                        })
+                        //this.scene.start('menuScene')
                     }
                 })
             }
