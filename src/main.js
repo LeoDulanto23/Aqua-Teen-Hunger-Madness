@@ -5,6 +5,9 @@
 //Comments: For the most part ATHM is a timer based endless runner, that I adapted in a previous project. I really 
 //put more visual design approaches and funny references with simple game mechanics in order to create a more 
 //arcade-like and addicting game like Flappy Birds mixed with Geometry Dash. Take a look! I put some effort into it lol!
+//Citations: Have used Frylock, MasterShake, Meatwad cartoon assets from google images and YT videos. For game mechanics, I 
+//was inspired and modified by Paddle Parkour, other Endless Runners like Resist the Temptation, and etc. 
+//and audios or other sprite images were inspired by music in my Spotify, Soundcloud, and YT playlists!
 //Date: 3/5/24
 
 "use strict" //keep me honest...
@@ -38,4 +41,4 @@ const textSpacer = 64
 
 let cursors
 
-let keySPACE, keyUP, keyR
+let keySPACE, keyUP, keyDOWN

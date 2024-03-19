@@ -74,25 +74,8 @@ class Load extends Phaser.Scene
             //repeat: -1,
             frames: this.anims.generateFrameNumbers('frylock', {start:0, end: 3, first: 0})
         })
-        /*this.anims.create({
-            key: 'frylock-punch',
-            frameRate: 8,
-            repeat: 0,
-            frames: this.anims.generateFrameNumbers('frylock', {frames:[4,7]}),
-        })
-        this.anims.create({
-            key: 'walk-left',
-            frameRate: 8,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('frylock', {frames:[8,11]}),
-        })
-        this.anims.create({
-            key: 'frypunch-left',
-            frameRate: 8,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('frylock', {frames:[12, 15]}),
-        })*/
 
+        //Starting menu scene
         this.scene.start('menuScene')
         console.log('Keys has been activated...')
         console.log('title screen started...')
