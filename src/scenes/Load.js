@@ -30,7 +30,7 @@ class Load extends Phaser.Scene
         this.load.audio('Preroll', 'audio/Adult Swim - Hulu preroll.mp3')
         this.load.audio('Beep', 'audio/gta-notification-sound.mp3')
         this.load.audio('Bruh', 'audio/bruh-sound-effect_WstdzdM.mp3')
-        this.load.audio('Click', 'audio/redbutton.wav')
+        this.load.audio('Click', 'audio/redButton.wav')
         this.load.audio('Punch', 'audio/punch.mp3')
         this.load.audio('GameOverMusic', 'audio/Game Over Yeah!.mp3')
         this.load.audio('Whomp', 'audio/WHOMP Sound Effect - Super Mario 64.mp3')
