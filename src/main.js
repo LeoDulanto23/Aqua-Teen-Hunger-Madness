@@ -1,6 +1,10 @@
 //Name: Leonardo Dulanto
-//Title: Make the Fake playtestbuild for ATHM
+//Title: Make the Fake Finished game: Aqua Teen Hunger Madness
 //Hours Spent: 30+ hrs
+//5 Phaser major components: Timers, Tween managers, animation managers, text objects, cameras
+//Comments: For the most part ATHM is a timer based endless runner, that I adapted in a previous project. I really 
+//put more visual design approaches and funny references with simple game mechanics in order to create a more 
+//arcade-like and addicting game like Flappy Birds mixed with Geometry Dash. Take a look! I put some effort into it lol!
 //Date: 3/5/24
 
 "use strict" //keep me honest...
@@ -19,7 +23,7 @@ const config = {
             debug: false,
         }
     },
-    scene: [Load, Menu, Adultswim, Credit, Instruction, Talkone, Play]
+    scene: [Load, Menu, Adultswim, Credit, Instruction, Talkone, Play, Gameover, Win]
 
 
 }
@@ -31,10 +35,7 @@ let w = game.config.width
 let h = game.config.height
 const textSpacer = 64
 
-//test
-//let borderUISize = game.config.height / 15
-//let borderPadding = borderUISize / 3
 
 let cursors
 
-let keySPACE, keyRIGHT, keyLEFT, keyFIRE, KeyRESTART
+let keySPACE, keyUP, keyR

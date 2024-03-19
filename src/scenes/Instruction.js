@@ -6,6 +6,7 @@ class Instruction extends Phaser.Scene
     }
     create()
     {
+        //Instructional music
         let instructMusicConfig = {
             rate: 1,
             volume: 0.5,
@@ -14,9 +15,11 @@ class Instruction extends Phaser.Scene
         this.instructMusic = this.sound.add('Instrumusic',instructMusicConfig)
         this.instructMusic.play()
 
+        //Instruction background
         let Instructional = this.add.tileSprite(0, 0,960, 580, 'Instruction').setOrigin(0, 0)
         console.log('Instructions has started...')
 
+        //Instruct Tween manager
         let instructTweens = this.tweens.add({
             targets: Instructional,
             duration: 5000,
@@ -32,7 +35,8 @@ class Instruction extends Phaser.Scene
     }
     update()
     {
-        if(Phaser.Input.Keyboard.JustDown(cursors.space))
+        //Instruction option
+        if(Phaser.Input.Keyboard.JustDown(cursors.up))
         {
             this.sound.play('Beep')
             this.instructMusic.stop()

@@ -6,6 +6,7 @@ class Menu extends Phaser.Scene
     }
     create()
     {
+        //Menu music
         let menuMusicConfig = {
             rate: 1,
             volume: 0.5,
@@ -13,16 +14,14 @@ class Menu extends Phaser.Scene
         }
         this.menuMuzak = this.sound.add('Intro', menuMusicConfig)
         this.menuMuzak.play()
-        //this.add.bitmapText(centerX, centerY, 'aqua_font', 'Best in the West' , 72).setOrigin(0.5)
-        //this.add.bitmapText(centerX, centerY + textSpacer, 'aqua_font', 'Press SPACE lil boi!', 50).setOrigin(0.5)
+        //Menu background
         this.menuBackground = this.add.tileSprite(0, 0, 960, 580, 'Title').setOrigin(0,0)
+        //Menu titles
         let title1 = this.add.bitmapText(centerX, centerY, 'aqua_font', 'AQUA TEEN HUNGER MADNESS', 52).setOrigin(0.5).setTint(0x3CA2FF)//0x3CA2FF
-        let title2 = this.add.bitmapText(centerX, centerY + textSpacer * 2, 'aqua_font', 'Press SPACE to play', 50).setOrigin(0.5).setTint(0x70F235)
+        let title2 = this.add.bitmapText(centerX, centerY + textSpacer * 2, 'aqua_font', 'Press UP(easy)', 45).setOrigin(0.5).setTint(0x70F235)
+        let title9 = this.add.bitmapText(centerX, centerY + textSpacer * 4, 'aqua_font', 'Press DOWN(hard)', 45).setOrigin(0.5).setTint(0xFF2213)
 
-        /*let overallDuration = 2500
-        let visiblePauseDuration = 500
-        let flashDuration = overallDuration - visiblePauseDuration / 3*/
-
+        //Menu tween managers
         let shakeTweenA = this.tweens.add({
             targets: title1,
             duration: 500,
@@ -47,12 +46,42 @@ class Menu extends Phaser.Scene
         })
         shakeTweenB.on('yoyo', () => {this.cameras.main.fadeIn(10000, 0.0075) })
 
+        let shakeTweenC= this.tweens.add({
+            targets: title9,
+            duration: 7500,
+            angle: { from: 1, to: -1},
+            yoyo: true,
+            repeat: -1,
+            scale: {
+                from: 1,
+                to: 2
+            }
+        })
+        shakeTweenC.on('yoyo', () => {this.cameras.main.fadeIn(10000, 0.0075) })
+
         cursors = this.input.keyboard.createCursorKeys()
     }
     update()
     {
-        if(Phaser.Input.Keyboard.JustDown(cursors.space))
+        //Game options
+        if(Phaser.Input.Keyboard.JustDown(cursors.up))
         {
+            // easy mode
+            game.settings = {
+                platformSpeed: 10,
+                gameTimer: 98000    
+            }
+            this.sound.play('Button')
+            this.scene.start('adultswimScene')
+            this.menuMuzak.stop()
+        }
+        if(Phaser.Input.Keyboard.JustDown(cursors.down))
+        {
+            // hard mode
+            game.settings = {
+                platformSpeed: 14,
+                gameTimer: 88000    
+            }
             this.sound.play('Button')
             this.scene.start('adultswimScene')
             this.menuMuzak.stop()

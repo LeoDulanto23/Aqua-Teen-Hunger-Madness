@@ -16,7 +16,7 @@ class Talkone extends Phaser.Scene
         this.TEXT_SIZE = 35		        // text font size (in pixels)
         this.TEXT_MAX_WIDTH = 715	    // max width of text within box
 
-        this.NEXT_TEXT = '[SPACE]'	    // text to display for next prompt
+        this.NEXT_TEXT = '[UP]'	    // text to display for next prompt
         this.NEXT_X = 900			    // next text prompt x-position
         this.NEXT_Y = 574			    // next text prompt y-position
 
@@ -48,6 +48,7 @@ class Talkone extends Phaser.Scene
         this.talkMusic.play()
         this.dialog = this.cache.json.get('Talkone')
 
+        this.talkBackground = this.add.tileSprite(0, 0, 960, 580, 'Livingroom').setOrigin(0, 0)
         // add dialog box sprite
         //Let's deal with this later, right now we need to get Frylock and Shake to move...
         this.dialogbox = this.add.sprite(this.DBOX_X, this.DBOX_Y, 'talkbox').setOrigin(0)
@@ -58,6 +59,8 @@ class Talkone extends Phaser.Scene
 
         this.frylock = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y, 'ultrafrylock').setOrigin(0, 1)
         this.mastershake = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'ultrashake').setOrigin(0, 1)
+        this.meatwad = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'ultrawad').setOrigin(0, 1)
+        this.madfrylock = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'madfrylock').setOrigin(0, 1)
         this.shrinkray = this.add.sprite(this.OFFSCREEN_X , this.DBOX_Y -30, 'ultraray').setOrigin(0, 1)
 
         /*let shrinkrayTween = this.tweens.add({
@@ -78,7 +81,7 @@ class Talkone extends Phaser.Scene
     update()
     {
         // check for spacebar press
-        if(Phaser.Input.Keyboard.JustDown(cursors.space) && !this.dialogTyping) 
+        if(Phaser.Input.Keyboard.JustDown(cursors.up) && !this.dialogTyping) 
         {
             this.sound.play('Beep')
             this.typeText() // trigger dialog

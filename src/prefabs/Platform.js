@@ -6,7 +6,7 @@ class Platform extends Phaser.Physics.Arcade.Sprite
         scene.add.existing(this)
         scene.physics.add.existing(this)
         this.setImmovable()
-        this.moveSpeed = 0
+        this.moveSpeed = game.settings.platformSpeed
         this.newPlatform = false
     }
     update()
@@ -14,8 +14,8 @@ class Platform extends Phaser.Physics.Arcade.Sprite
         this.x -= this.moveSpeed
         if(this.x <= 0 - this.width)
         {
-            this.x = game.config.width
-            this.y = Phaser.Math.Between(300, 350)
+            this.x = Phaser.Math.Between(50, 950)
+            this.y = Phaser.Math.Between(50, 350)
         }
     }
     reset()
