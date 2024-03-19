@@ -1,1 +1,1 @@
-# Aqua-Teen-Hunger-Madness
+# Aqua-Teen-Hunger-Madness, a timed based endless runner with tweens and object animations that present a minmial but highly visual game with simple mechanics with fun pop references. A game for the elite gamers!
